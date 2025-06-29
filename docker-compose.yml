@@ -1,10 +1,8 @@
 services:
   app:
     image: my-php-apache      # Custom PHP & Apache image
+
     
-    ports:
-      - "8080:80"   # Apache server port
-      - "5173:5173"  # Vite server port
     volumes:
       - .:/var/www/html       # Mount current folder
     depends_on:
@@ -15,8 +13,7 @@ services:
   db:
     image: mysql:8
 
-    ports:
-      - "4306:3306"
+
     environment:
       MYSQL_DATABASE: homestead
       MYSQL_USER: homestead
