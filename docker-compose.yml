@@ -1,0 +1,29 @@
+services:
+  app:
+    image: my-php-apache      # Custom PHP & Apache image
+    container_name: laravel-app
+    ports:
+      - "8080:80"   # Apache server port
+      - "5173:5173"  # Vite server port
+    volumes:
+      - .:/var/www/html       # Mount current folder
+    depends_on:
+      - db
+    working_dir: /var/www/html
+    command: apache2-foreground
+
+  db:
+    image: mysql:8
+    container_name: laravel-db
+    ports:
+      - "4306:3306"
+    environment:
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - dbdata:/var/lib/mysql
+
+volumes:
+  dbdata:
