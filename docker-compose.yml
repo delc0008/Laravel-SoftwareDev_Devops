@@ -1,7 +1,7 @@
 services:
   app:
     image: my-php-apache      # Custom PHP & Apache image
-    container_name: laravel-app
+    
     ports:
       - "8080:80"   # Apache server port
       - "5173:5173"  # Vite server port
@@ -14,7 +14,7 @@ services:
 
   db:
     image: mysql:8
-    container_name: laravel-db
+
     ports:
       - "4306:3306"
     environment:
